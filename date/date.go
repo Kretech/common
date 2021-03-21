@@ -12,6 +12,7 @@ func TimeOffset(offset time.Duration) {
 }
 
 // ToGoFormat 把 Y-m-d 转成 Go 格式
+// cache ?
 func ToGoFormat(format string) string {
 	rule := []string{
 		`Y`, `2006`, //  年
@@ -80,7 +81,7 @@ func LocalFormat(format string, timestamp ...int64) string {
 // @see http://php.net/manual/en/function.strtotime.php#example-2803
 func StrToTime(expr string) int64 {
 	t := time.Now().Local()
-	//pattern := `\d+ [(year)|(month)|(day)|(hour)|(minute)|(second)]`
+	//pattern := `(\d+|[(last)|(next)]) [(year)|(month)|(day)|(hour)|(minute)|(second)|(Monday)]`
 
 	for i := 1; i < 10; i++ {
 
